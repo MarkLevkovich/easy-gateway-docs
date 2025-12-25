@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>easy docs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Боковая панель -->
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-symbol">&gt;</div>
+                <h1>Easy-Gateway</h1>
+                <div class="version">v0.1.1</div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-item">
+                    <a href="#overview" class="nav-link active">overview</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#install" class="nav-link">install</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#api" class="nav-link">usage</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#examples" class="nav-link">examples</a>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <a href="https://github.com/username/simplelib" class="github-link">github</a>
+            </div>
+        </nav>
+        
+        <!-- Основной контент -->
+        <main class="content">
+            <!-- Обзор -->
+            <section id="overview" class="doc-section active">
+                <h2 class="section-title">overview</h2>
+                
+                <p class="lead">A simple to use and lightweight API Gateway for microservice architecture.</p>
+                <h2>✨ Features</h2>
+                <div class="code-block">
+<pre>- ✅ Easy setup via YAML
+- ✅ CLI interface
+- ✅ Middleware system
+- ✅ Routing with prefixes
+- ✅ Rate limiting
+- ✅ Logging</pre>
+                </div>
+            <h3>Next will be authentication, caching, and etc!</h3>
+            </section>
+            
+            <!-- Установка -->
+            <section id="install" class="doc-section">
+                <h2 class="section-title">install</h2>
+                
+                <div class="code-block terminal">
+<pre><code><span class="prompt">$</span> pip install easy-gateway</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                </div>
+                
+                <p class="note">Requirements: Python ≥ 3.7, no dependencies</p>
+            </section>
+            
+            
+            <section id="api" class="doc-section">
+                <h2 class="section-title">usage</h2>
+                
+                <div class="api-item">
+                    <h3>Create a config.yaml based on the template in the examples (in the root directory)</h3>
+                    <p>add routes:</p>
+                    <div class="code-block small">
+<pre><code>>>> routes:
+  - path: "/bin/*"
+    target: "https://httpbin.org/"
+    description: "Echo Server"</code></pre>
+                    </div>
+                    <div class="code-block small">
+<pre><code>>>> FOR EXAMPLE: user/* -> for a url with any prefix after user.
+but user/ -> for a clear url</code></pre>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <h3>Select middlewares:</h3>
+                    <p>now only logging and rate-limit</p>
+                    <div class="code-block small">
+<pre><code>>>> middlewares:
+  - name: "LoggingMiddleware"
+    enabled: true
+
+  - name: "RateLimitMiddleware"
+    enabled: true
+    requests_per_minute: 5 # select your own limit
+</code></pre>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <h3>To start gateway:</h3>
+                    <p>run it in the root directory</p>
+                    <div class="code-block small">
+<pre><code>>>> easy-gateway -c PATH-TO-YOUR-CONFIG
+    # or --config or just easy-gateway if your config is in root directory
+</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Примеры -->
+            <section id="examples" class="doc-section">
+                <h2 class="section-title">example of config.yaml</h2>
+                
+                <div class="code-block">
+<pre><code>routes:
+  - path: "/users/*"
+    target: "https://mysite/list/users"
+    description: "Echo Server"
+
+  - path: "/admin"
+    target: "https://mysite/admin"
+    description: "Echo Server"
+
+  - path: "/chat"
+    target: "https://mysite/chat"
+    description: "Echo Server"
+
+middlewares:
+  - name: "LoggingMiddleware"
+    enabled: true
+
+  - name: "RateLimitMiddleware"
+    enabled: true
+    requests_per_minute: 5
+</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                </div>
+            </section>
+            
+            <footer class="main-footer">
+                <p>easy-gateway docs · <a href="https://github.com/MarkLevkovich/easy_gateway">source</a></p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
