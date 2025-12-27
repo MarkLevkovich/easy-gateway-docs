@@ -16,7 +16,7 @@
                 <h1>Easy-Gateway</h1>
                 <div class="version">v0.1.2</div>
                 <h5>LAST UPDATE:</h5>
-                <h5> - added server settings in config</h5>
+                <h5> - added cors settings in config</h5>
             </div>
 
             <div class="nav-section">
@@ -111,6 +111,19 @@ but user/ -> for a clear url</code></pre>
   - name: "RateLimitMiddleware"
     enabled: true
     requests_per_minute: 5 # select your own limit
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h3>Setup CORS:</h3>
+                    <p>add you origins:</p>
+                    <div class="code-block small">
+<pre><code>
+    cors:
+      allow_origins:
+        - "myfront.com"
+        - "testreact.space"
 </code></pre>
                     </div>
                 </div>
